@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Proje_Opp.AppContext;
-using Proje_Opp.Entity;
+using System.Linq;
 
 namespace Proje_Opp.Controllers
 {
@@ -10,9 +10,9 @@ namespace Proje_Opp.Controllers
 
         public ProductController(Context context)
         {
-           
             _context = context;
         }
+
         public IActionResult Index()
         {
             var values = _context.Products.ToList();

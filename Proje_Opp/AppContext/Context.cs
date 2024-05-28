@@ -6,12 +6,12 @@ namespace Proje_Opp.AppContext
     public class Context : DbContext
     {
 
+        public Context(DbContextOptions<Context> options) : base(options) { }
 
-       
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Server=DESKTOP-HJS8A4F;Database=OppDb;Trusted_Connection=True;Integrated Security=true;TrustServerCertificate=True");
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlServer("Server=DESKTOP-HJS8A4F;Database=OppDb;Trusted_Connection=True;Integrated Security=true;TrustServerCertificate=True");
+        //}
 
         public DbSet<Product> Products { get; set; }
 
