@@ -6,10 +6,16 @@ namespace Proje_Opp.Controllers
 {
     public class ProductController : Controller
     {
-        Context context = new Context();
+        private readonly Context _context;
+
+        public ProductController(Context context)
+        {
+           
+            _context = context;
+        }
         public IActionResult Index()
         {
-            var values = context.Products.ToList();
+            var values = _context.Products.ToList();
             return View(values);
         }
     }
