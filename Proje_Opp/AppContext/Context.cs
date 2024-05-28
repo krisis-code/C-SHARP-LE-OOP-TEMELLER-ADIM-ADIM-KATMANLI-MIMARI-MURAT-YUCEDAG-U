@@ -1,13 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Proje_Opp.Entity;
 
-namespace Proje_Opp.Context
+namespace Proje_Opp.AppContext
 {
     public class Context : DbContext
     {
+
+
+       
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=DESKTOP-HJS8A4F;Database=OppDb;Trusted_Connection=True;integratedsecurity=true");
+            optionsBuilder.UseSqlServer("Server=DESKTOP-HJS8A4F;Database=OppDb;Trusted_Connection=True;Integrated Security=true;TrustServerCertificate=True");
         }
 
         public DbSet<Product> Products { get; set; }
