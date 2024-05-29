@@ -48,5 +48,18 @@ namespace Proje_Opp.Controllers
             var value = _context.Products.Where(x => x.Id == Id).FirstOrDefault();
             return View(value);
         }
+
+        [HttpPost]
+        public IActionResult Update(Product product)
+        {
+            var value = _context.Products.Where(x => x.Id == product.Id).FirstOrDefault();
+            value.Name = product.Name;
+            value.Price = product.Price;
+            value.Stock = product.Stock;
+            
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
     }
 }
