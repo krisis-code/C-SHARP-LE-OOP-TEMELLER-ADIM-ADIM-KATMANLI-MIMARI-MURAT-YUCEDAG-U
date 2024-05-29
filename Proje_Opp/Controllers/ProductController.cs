@@ -42,5 +42,11 @@ namespace Proje_Opp.Controllers
             TempData["success"] = (value.Name + " İsimli ürün silinmiştir.");
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public IActionResult Update(int Id)
+        {
+            var value = _context.Products.Where(x => x.Id == Id).FirstOrDefault();
+            return View(value);
+        }
     }
 }
