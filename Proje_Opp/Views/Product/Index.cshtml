@@ -1,55 +1,45 @@
 ﻿@using Proje_Opp.Entity
 @model List<Product>
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+
 @{
+    // Herhangi bir sunucu tarafı işlemi gerekirse buraya ekleyebilirsiniz
 }
 
+<!-- Basic Bootstrap Table -->
+<div class="card">
+    <!-- Yeni Makale Ekleme Butonu -->
+    @* <a class="btn btn-success" asp-area="Admin" asp-controller="Article" asp-action="Add">Yeni Makale Ekle <i class="bx bx-plus"></i></a> *@
 
-    <!-- Basic Bootstrap Table -->
-    <div class="card">
-       @*  <a class="btn btn-success" asp-area="Admin" asp-controller="Article" asp-action="Add">Yeni Makale Ekle <i class="bx bx-plus"></i></a> *@
-        <div class="table-responsive text-nowrap m-5">
-
-
-
-            <table class="table table-bordered" id="articlesTable" width="100%" cellspacing="0">
-                <thead>
+    <div class="table-responsive text-nowrap m-5">
+        <table class="table table-bordered" id="articlesTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Ürün İsmi</th>
+                    <th>Fiyat</th>
+                    <th>Stok</th>
+                    <th>İşlem</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (var product in Model)
+                {
                     <tr>
-                        <th>Id</th>
-                        <th>Ürün İsmi</th>
-                        <th>Fiyat</th>
-                        <th>Stok</th>
-                        <th>Durum</th>
-                        <th>İşlem</th>
+                        <td>@product.Id</td>
+                        <td>@product.Name</td>
+                        <td>@product.Price</td>
+                        <td>@product.Stock</td>
+                        <th>
 
+                            <a class="btn btn-primary btn-sm" data-id="@product.Id" asp-controller="Product" asp-action="Update" asp-route-Id="@product.Id"><i class="bx bxs-edit"></i></a>
+                            <a class="btn btn-danger btn-sm" data-id="@product.Id" asp-controller="Product" asp-action="Delete" asp-route-Id="@product.Id"><i class="bx bx-minus-circle"></i></a>
+
+
+                        </th>
                     </tr>
-                </thead>
-              
-                <tbody class="table-border-bottom-0">
-                    @foreach (var product in Model)
-                    {
-                    <tr name="@product.Id">
-                        <th>@product.Name</th>
-                        <th>@product.Price</th>
-                        <th>@product.Stock</th>
-                       
-
-
-                           
-
-                        </tr>
-
-
-                    }
-                </tbody>
-            </table>
-        </div>
+                }
+            </tbody>
+        </table>
     </div>
-    <!--/ Basic Bootstrap Table -->
-
-
-
-
 </div>
+<!--/ Basic Bootstrap Table -->
