@@ -33,5 +33,14 @@ namespace Proje_Opp.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public IActionResult Delete(int Id)
+        {
+            var value = _context.Products.Where(x => x.Id == Id).FirstOrDefault();
+            _context.Remove(value);
+            _context.SaveChanges();
+            TempData["success"] = (value.Name + " İsimli ürün silinmiştir.");
+            return RedirectToAction("Index");
+        }
     }
 }

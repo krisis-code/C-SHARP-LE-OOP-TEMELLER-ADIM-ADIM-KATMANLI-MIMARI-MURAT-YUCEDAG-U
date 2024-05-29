@@ -1,8 +1,9 @@
 ﻿@using Proje_Opp.Entity
 @model List<Product>
 
-@{
-    // Herhangi bir sunucu tarafı işlemi gerekirse buraya ekleyebilirsiniz
+@if (TempData["success"] != null)
+{
+    <h2>@TempData["success"]</h2>
 }
 
 <!-- Basic Bootstrap Table -->
