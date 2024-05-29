@@ -1,0 +1,47 @@
+﻿@using Proje_Opp.Entity
+@model List<Customer>
+
+@if (TempData["success"] != null)
+{
+    <h2>@TempData["success"]</h2>
+}
+
+<!-- Basic Bootstrap Table -->
+<div class="card">
+    <!-- Yeni Makale Ekleme Butonu -->
+    <a class="btn btn-success" asp-controller="Customer" asp-action="Add">Yeni ürün Ekle <i class="bx bx-plus"></i></a>
+
+    <div class="table-responsive text-nowrap m-5">
+
+        <table class="table table-bordered" id="articlesTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Müşteri İsmi</th>
+                    <th>Şehir</th>
+                    
+                    <th>İşlem</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (var customer in Model)
+                {
+                    <tr>
+                        <td>@customer.Id</td>
+                        <td>@customer.Name</td>
+                        <td>@customer.City</td>
+                       
+                        <th>
+
+                            <a class="btn btn-primary btn-sm" data-id="@customer.Id" asp-controller="Customer" asp-action="Update" asp-route-Id="@customer.Id"><i class="bx bxs-edit"></i></a>
+                            <a class="btn btn-danger btn-sm" data-id="@customer.Id" asp-controller="Customer" asp-action="Delete" asp-route-Id="@customer.Id"><i class="bx bx-minus-circle"></i></a>
+
+
+                        </th>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<!--/ Basic Bootstrap Table -->
