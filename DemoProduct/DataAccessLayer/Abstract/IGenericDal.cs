@@ -12,7 +12,7 @@ namespace DataAccessLayer.Abstract
 
         void Delete (T t);
 
-        void Upgrade (T t); 
+        void Update (T t); 
 
         List<T> GetList();
 
