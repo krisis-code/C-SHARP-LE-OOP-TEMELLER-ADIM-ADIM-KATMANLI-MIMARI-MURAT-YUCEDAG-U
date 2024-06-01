@@ -19,27 +19,27 @@ namespace BusinessLayer.Concrete
 
         public void Delete(Category t)
         {
-            throw new NotImplementedException();
+            _categoryDal.Delete(t);
         }
 
         public Category GetById(int id)
         {
-            throw new NotImplementedException();
+            return _categoryDal.GetById(id);
         }
 
         public List<Category> GetList()
         {
-            throw new NotImplementedException();
+           return _categoryDal.GetList();
         }
 
         public void Insert(Category t)
         {
-            throw new NotImplementedException();
+           _categoryDal.Insert(t);
         }
 
         public void Update(Category t)
         {
-            throw new NotImplementedException();
+            _categoryDal.Update(t);
         }
     }
 }
