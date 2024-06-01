@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Concrete;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Demo_Product.Controllers
@@ -16,6 +17,27 @@ namespace Demo_Product.Controllers
         {
          var values =  _productManager.TGetList();
             return View(values);
+        }
+
+        [HttpGet]
+        public IActionResult Add()
+        {
+            
+            return View(); 
+        }
+
+        [HttpPost]
+        public IActionResult Add(Product product) 
+        {
+            if (product != null)
+            {
+                _productManager.TInsert(product);
+            }
+            else
+            {
+                return View(product);
+            }
+            return RedirectToAction("Index");
         }
     }
 }
