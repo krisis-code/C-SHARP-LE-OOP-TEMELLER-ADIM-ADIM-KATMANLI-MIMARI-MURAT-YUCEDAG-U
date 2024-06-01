@@ -16,6 +16,8 @@ builder.Services.AddScoped<IProductDal, EfProductDal>();
 builder.Services.AddScoped<ICustomerDal, EfCustomerDal>();
 builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();
 builder.Services.AddScoped<ProductValidator>();
+builder.Services.AddScoped<CustomerValidator>();
+builder.Services.AddScoped<CategoryValidator>();
 builder.Services.AddScoped<ProductManager>();
 
 builder.Services.AddScoped<CategoryManager>();
