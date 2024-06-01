@@ -20,27 +20,27 @@ namespace BusinessLayer.Concrete
 
         public void TDelete(Customer t)
         {
-            throw new NotImplementedException();
+            _customerDal.Delete(t); 
         }
 
         public Customer TGetById(int id)
         {
-            throw new NotImplementedException();
+            return _customerDal.GetById(id);
         }
 
         public List<Customer> TGetList()
         {
-            throw new NotImplementedException();
+            return _customerDal.GetList();
         }
 
         public void TInsert(Customer t)
         {
-            throw new NotImplementedException();
+           _customerDal.Insert(t);
         }
 
         public void TUpdate(Customer t)
         {
-            throw new NotImplementedException();
+            _customerDal.Update(t);
         }
     }
 }
