@@ -49,5 +49,13 @@ namespace Demo_Product.Controllers
             }
             return View();
         }
+     
+        public IActionResult Delete(int id)
+        {
+            var product = _productManager.TGetById(id);
+            _productManager.TDelete(product);
+            return RedirectToAction("Index");
+        }
+
     }
 }
