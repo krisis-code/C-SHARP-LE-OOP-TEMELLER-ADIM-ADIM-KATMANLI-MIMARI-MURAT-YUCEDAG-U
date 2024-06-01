@@ -1,4 +1,5 @@
 using BusinessLayer.Concrete;
+using BusinessLayer.FluentValidation;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
@@ -14,7 +15,7 @@ builder.Services.AddDbContext<Context>(options =>
 builder.Services.AddScoped<IProductDal, EfProductDal>();
 builder.Services.AddScoped<ICustomerDal, EfCustomerDal>();
 builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();
-
+builder.Services.AddScoped<ProductValidator>();
 builder.Services.AddScoped<ProductManager>();
 
 builder.Services.AddScoped<CategoryManager>();
