@@ -57,5 +57,34 @@ namespace Demo_Product.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
+        public IActionResult Update (int id)
+        {
+            var value = _productManager.TGetById(id);
+
+            return View(value);
+        }
+        [HttpPost]
+        public IActionResult Update(Product product)
+        {
+            ValidationResult result = _productValidator.Validate(product);
+          
+            if (result.IsValid)
+            {
+                _productManager.TUpdate(product);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                return View(product);
+            }
+           
+        }
+
+
     }
 }
