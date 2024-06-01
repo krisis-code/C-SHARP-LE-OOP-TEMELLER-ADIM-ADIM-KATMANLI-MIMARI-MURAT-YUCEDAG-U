@@ -4,22 +4,22 @@ using EntityLayer.Concrete;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Demo_Product.Controllers
+namespace Demo_customer.Controllers
 {
-    public class ProductController : Controller
+    public class CustomerController : Controller
     {
-        private readonly ProductManager _productManager;
-        private readonly ProductValidator _productValidator;
+        private readonly CustomerManager _customerManager;
+        private readonly CustomerValidator _customerValidator;
 
-        public ProductController(ProductManager productManager, ProductValidator productValidator)
+        public CustomerController(CustomerManager customerManager, CustomerValidator CustomerValidator)
         {
-            _productManager = productManager;
-            _productValidator = productValidator;
+            _customerManager = customerManager;
+            _customerValidator = CustomerValidator;
         }
 
         public IActionResult Index()
         {
-         var values =  _productManager.TGetList();
+         var values =  _customerManager.TGetList();
             return View(values);
         }
 
@@ -31,12 +31,12 @@ namespace Demo_Product.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(Product product) 
+        public IActionResult Add(Customer customer) 
         {
-            ValidationResult result = _productValidator.Validate(product);
+            ValidationResult result = _customerValidator.Validate(customer);
             if (result.IsValid)
             {
-                _productManager.TInsert(product);
+                _customerManager.TInsert(customer);
                 return RedirectToAction("Index");
             }
             else
@@ -45,33 +45,33 @@ namespace Demo_Product.Controllers
                 {
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
-                return View(product);
+                return View(customer);
             }
             return View();
         }
      
         public IActionResult Delete(int id)
         {
-            var product = _productManager.TGetById(id);
-            _productManager.TDelete(product);
+            var customer = _customerManager.TGetById(id);
+            _customerManager.TDelete(customer);
             return RedirectToAction("Index");
         }
 
         [HttpGet]
         public IActionResult Update (int id)
         {
-            var value = _productManager.TGetById(id);
+            var value = _customerManager.TGetById(id);
 
             return View(value);
         }
         [HttpPost]
-        public IActionResult Update(Product product)
+        public IActionResult Update(Customer customer)
         {
-            ValidationResult result = _productValidator.Validate(product);
+            ValidationResult result = _customerValidator.Validate(customer);
           
             if (result.IsValid)
             {
-                _productManager.TUpdate(product);
+                _customerManager.TUpdate(customer);
                 return RedirectToAction("Index");
             }
             else
@@ -80,7 +80,7 @@ namespace Demo_Product.Controllers
                 {
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
-                return View(product);
+                return View(customer);
             }
            
         }

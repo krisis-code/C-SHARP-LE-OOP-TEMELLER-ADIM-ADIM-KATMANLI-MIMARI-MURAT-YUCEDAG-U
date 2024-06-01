@@ -1,4 +1,8 @@
+using BusinessLayer.Concrete;
+using BusinessLayer.FluentValidation;
+using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +11,17 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<Context>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+// Register repositories and other services
+builder.Services.AddScoped<IProductDal, EfProductDal>();
+builder.Services.AddScoped<ICustomerDal, EfCustomerDal>();
+builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();
+builder.Services.AddScoped<ProductValidator>();
+builder.Services.AddScoped<CustomerValidator>();
+builder.Services.AddScoped<CategoryValidator>();
+builder.Services.AddScoped<ProductManager>();
+
+builder.Services.AddScoped<CategoryManager>();
+builder.Services.AddScoped<CustomerManager>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
