@@ -11,4 +11,9 @@
     <ProjectReference Include="..\EntityLayer\EntityLayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Concrete\" />
+    <Folder Include="FluentValidation\" />
+  </ItemGroup>
+
 </Project>
