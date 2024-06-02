@@ -19,7 +19,7 @@ namespace Demo_customer.Controllers
 
         public IActionResult Index()
         {
-         var values =  _customerManager.TGetList();
+         var values =  _customerManager.GetCustomersWithJob();
             return View(values);
         }
 
