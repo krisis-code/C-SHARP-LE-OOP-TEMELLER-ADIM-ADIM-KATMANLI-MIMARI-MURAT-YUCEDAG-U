@@ -8,5 +8,7 @@ using System.Threading.Tasks;
 namespace DataAccessLayer.Abstract
 {
     public interface IJobDal : IGenericDal<Job>
+    {
+
     }
 }

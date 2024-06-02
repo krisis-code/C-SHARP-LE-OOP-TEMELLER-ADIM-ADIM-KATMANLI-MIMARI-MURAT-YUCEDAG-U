@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-    internal class JobManager : IJobDal
+    public class JobManager : IJobDal
     {
         private readonly IJobDal _jobDal;
 
