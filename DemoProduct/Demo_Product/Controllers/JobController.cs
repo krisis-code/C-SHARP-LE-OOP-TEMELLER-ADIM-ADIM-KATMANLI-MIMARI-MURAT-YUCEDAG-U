@@ -75,8 +75,22 @@ namespace Demo_customer.Controllers
 
             if (result.IsValid)
             {
-                _jobManager.Update(job);
-                return RedirectToAction("Index");
+                var existingJob = _jobManager.GetById(job.JobId); // Mevcut kaydı yükleyin
+
+                if (existingJob != null)
+                {
+                    // Gerekirse sadece gerekli alanları güncelleyin
+                    existingJob.Name = job.Name;
+                    // Diğer alanları da burada güncelleyebilirsiniz
+
+                    _jobManager.Update(existingJob); // Mevcut kaydı güncelleyin
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Job not found.");
+                    return View(job);
+                }
             }
             else
             {
@@ -86,8 +100,8 @@ namespace Demo_customer.Controllers
                 }
                 return View(job);
             }
-
         }
+
 
 
     }
