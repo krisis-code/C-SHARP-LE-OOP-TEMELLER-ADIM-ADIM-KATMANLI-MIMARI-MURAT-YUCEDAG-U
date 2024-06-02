@@ -13,6 +13,9 @@ namespace Demo_Product.Models
         [Required(ErrorMessage = "Lütfen Kullanıcı giriniz")]
         public string UserName { get; set; }
 
+        [Required(ErrorMessage = "Lütfen mail giriniz")]
+        public string Email { get; set; }
+
         [Required(ErrorMessage = "Lütfen Şifre giriniz")]
         public String Password { get; set; }
 
