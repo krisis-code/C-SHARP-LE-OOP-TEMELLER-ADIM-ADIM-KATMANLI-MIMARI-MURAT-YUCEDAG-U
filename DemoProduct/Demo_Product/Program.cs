@@ -15,11 +15,13 @@ builder.Services.AddDbContext<Context>(options =>
 builder.Services.AddScoped<IProductDal, EfProductDal>();
 builder.Services.AddScoped<ICustomerDal, EfCustomerDal>();
 builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();
+builder.Services.AddScoped<IJobDal, EfJobDal>();
+builder.Services.AddScoped<JobValidator>();
 builder.Services.AddScoped<ProductValidator>();
 builder.Services.AddScoped<CustomerValidator>();
 builder.Services.AddScoped<CategoryValidator>();
 builder.Services.AddScoped<ProductManager>();
-
+builder.Services.AddScoped<JobManager>();
 builder.Services.AddScoped<CategoryManager>();
 builder.Services.AddScoped<CustomerManager>();
 var app = builder.Build();
