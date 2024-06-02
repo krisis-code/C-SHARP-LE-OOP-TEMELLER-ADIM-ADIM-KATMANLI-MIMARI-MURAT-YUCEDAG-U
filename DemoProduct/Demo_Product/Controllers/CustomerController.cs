@@ -3,6 +3,7 @@ using BusinessLayer.FluentValidation;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Demo_customer.Controllers
 {
@@ -10,28 +11,33 @@ namespace Demo_customer.Controllers
     {
         private readonly CustomerManager _customerManager;
         private readonly CustomerValidator _customerValidator;
+        private readonly JobManager _jobManager;
 
-        public CustomerController(CustomerManager customerManager, CustomerValidator CustomerValidator)
+        public CustomerController(CustomerManager customerManager, CustomerValidator CustomerValidator, JobManager jobManager)
         {
             _customerManager = customerManager;
             _customerValidator = CustomerValidator;
+            _jobManager = jobManager;
         }
 
         public IActionResult Index()
         {
-         var values =  _customerManager.TGetList();
+         var values =  _customerManager.GetCustomersWithJob();
             return View(values);
         }
 
         [HttpGet]
         public IActionResult Add()
         {
-            
-            return View(); 
+            // Job listesini almak ve ViewBag'e eklemek
+            var jobList = _jobManager.GetList();
+            ViewBag.JobList = new SelectList(jobList, "JobId", "Name");
+
+            return View(new Customer()); // Boş bir Customer nesnesi döndürmek
         }
 
         [HttpPost]
-        public IActionResult Add(Customer customer) 
+        public IActionResult Add(Customer customer)
         {
             ValidationResult result = _customerValidator.Validate(customer);
             if (result.IsValid)
@@ -41,15 +47,18 @@ namespace Demo_customer.Controllers
             }
             else
             {
+                // Job listesini yeniden almak ve ViewBag'e eklemek
+                var jobList = _jobManager.GetList();
+                ViewBag.JobList = new SelectList(jobList, "JobId", "Name");
+
                 foreach (var item in result.Errors)
                 {
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
                 return View(customer);
             }
-            return View();
         }
-     
+
         public IActionResult Delete(int id)
         {
             var customer = _customerManager.TGetById(id);
