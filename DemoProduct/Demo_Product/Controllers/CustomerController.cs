@@ -69,8 +69,10 @@ namespace Demo_customer.Controllers
         [HttpGet]
         public IActionResult Update (int id)
         {
-            var value = _customerManager.TGetById(id);
 
+            var value = _customerManager.TGetById(id);
+            var jobList = _jobManager.GetList();
+            ViewBag.JobList = new SelectList(jobList, "JobId", "Name");
             return View(value);
         }
         [HttpPost]
@@ -80,6 +82,8 @@ namespace Demo_customer.Controllers
           
             if (result.IsValid)
             {
+                var jobList = _jobManager.GetList();
+                ViewBag.JobList = new SelectList(jobList, "JobId", "Name");
                 _customerManager.TUpdate(customer);
                 return RedirectToAction("Index");
             }

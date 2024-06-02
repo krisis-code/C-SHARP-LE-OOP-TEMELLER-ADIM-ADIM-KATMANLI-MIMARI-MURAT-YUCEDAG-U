@@ -22,6 +22,11 @@
                     <div class="card-body">
 
                         <div class="form-group">
+                            <label asp-for="JobId" id="defaultFormControlInput" class="form-label">Meslek</label>
+                            <select id="categoryList" class="form-control mb-3" asp-for="JobId" asp-items="ViewBag.JobList"></select>
+                            <span asp-validation-for="JobId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
                             <label asp-for="Name" id="defaultFormControlInput" class="form-label">Müşteri ismi</label>
                             <input asp-for="Name" type="text" class="form-control mb-3" id="defaultFormControlInput" placeholder="Lütfen Müşteri ismi giriniz." aria-describedby="defaultFormControlHelp">
                             <span asp-validation-for="Name" class="text-danger"></span>
