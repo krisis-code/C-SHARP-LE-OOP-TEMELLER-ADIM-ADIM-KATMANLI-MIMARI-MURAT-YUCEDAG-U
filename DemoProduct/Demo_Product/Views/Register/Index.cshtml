@@ -125,12 +125,21 @@
 
                         <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
                             <div class="mb-3">
-                                <label for="username" class="form-label">Kullanıcı Adı</label>
+                                <label for="Name" class="form-label">İsim</label>
                                 <input type="text"
                                        class="form-control"
-                                       id="username"
-                                       name="username"
-                                       placeholder="Kullanıcı adınızı girin"
+                                       id="Name"
+                                       name="Name"
+                                       placeholder="İsminizi giriniz"
+                                       autofocus />
+                            </div>
+                            <div class="mb-3">
+                                <label for="Surname" class="form-label">Soy isim</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="Surname"
+                                       name="Surname"
+                                       placeholder="Soyismizi  girin"
                                        autofocus />
                             </div>
                             <div class="mb-3">
@@ -150,6 +159,19 @@
                                 </div>
                             </div>
 
+                            <div class="mb-3 form-password-toggle">
+                                <label class="form-label" for="password">Şifre tekrar</label>
+                                <div class="input-group input-group-merge">
+                                    <input type="password"
+                                           id="Confirmedpassword"
+                                           class="form-control"
+                                           name="Confirmedpassword"
+                                           placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                           aria-describedby="Confirmedpassword" />
+                                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                                </div>
+                            </div>
+
                             <div class="mb-3">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms" />
@@ -159,7 +181,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <button class="btn btn-primary d-grid w-100">Sign up</button>
+                            <button class="btn btn-primary d-grid w-100">Kayıt ol</button>
                         </form>
 
                         <p class="text-center">
