@@ -3,6 +3,7 @@ using BusinessLayer.FluentValidation;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
+using Demo_Product.Models;
 using EntityLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 
@@ -26,7 +27,7 @@ builder.Services.AddScoped<JobManager>();
 builder.Services.AddScoped<CategoryManager>();
 builder.Services.AddScoped<CustomerManager>();
 builder.Services.AddDbContext<Context>();
-builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
+builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>().AddErrorDescriber<CustomIdentityValidator>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
