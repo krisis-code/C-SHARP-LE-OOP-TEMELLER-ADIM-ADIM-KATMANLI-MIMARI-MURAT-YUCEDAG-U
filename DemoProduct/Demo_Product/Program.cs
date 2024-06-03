@@ -3,6 +3,7 @@ using BusinessLayer.FluentValidation;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
+using EntityLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,6 +25,8 @@ builder.Services.AddScoped<ProductManager>();
 builder.Services.AddScoped<JobManager>();
 builder.Services.AddScoped<CategoryManager>();
 builder.Services.AddScoped<CustomerManager>();
+builder.Services.AddDbContext<Context>();
+builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

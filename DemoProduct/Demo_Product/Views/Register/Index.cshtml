@@ -1,4 +1,5 @@
-﻿@{
+﻿@model UserRegisterViewModel
+@{
     Layout = null;
 }
 <!DOCTYPE html>
@@ -132,6 +133,7 @@
                                        name="Name"
                                        placeholder="İsminizi giriniz"
                                        autofocus />
+                                       <span asp-validation-for="Name" ></span>
                             </div>
                             <div class="mb-3">
                                 <label for="SurName" class="form-label">Soy isim</label>
@@ -141,10 +143,22 @@
                                        name="SurName"
                                        placeholder="Soyismizi  girin"
                                        autofocus />
+                                <span asp-validation-for="SurName"></span>
                             </div>
                             <div class="mb-3">
                                 <label for="Email" class="form-label">Email</label>
                                 <input type="email" class="form-control" id="Email" name="Email" placeholder="E-posta adresinizi girin" />
+                                <span asp-validation-for="Email"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label for="UserName" class="form-label">Kullanıcı Adı</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="UserName"
+                                       name="UserName"
+                                       placeholder="Kullanıcı adı  girin"
+                                       autofocus />
+                                <span asp-validation-for="UserName"></span>
                             </div>
                             <div class="mb-3 form-password-toggle">
                                 <label class="form-label" for="Password">Şifre</label>
@@ -156,6 +170,7 @@
                                            placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                                            aria-describedby="Password" />
                                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                                    <span asp-validation-for="Password"></span>
                                 </div>
                             </div>
 
@@ -169,6 +184,7 @@
                                            placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                                            aria-describedby="ConfirmPassword" />
                                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                                    <span asp-validation-for="ConfirmPassword"></span>
                                 </div>
                             </div>
 
