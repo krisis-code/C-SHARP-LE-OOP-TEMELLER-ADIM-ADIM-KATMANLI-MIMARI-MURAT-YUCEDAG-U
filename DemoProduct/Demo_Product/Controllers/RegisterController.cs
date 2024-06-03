@@ -25,6 +25,17 @@ namespace Demo_Product.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(UserRegisterViewModel user)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(user);
+            }
+
+            if (user.Password != user.ConfirmPassword)
+            {
+                ModelState.AddModelError("", "Şifreler eşleşmiyor.");
+                return View(user);
+            }
+
             var appUser = new AppUser
             {
                 Name = user.Name,
@@ -32,24 +43,23 @@ namespace Demo_Product.Controllers
                 UserName = user.UserName,
                 Email = user.Email
             };
-            if (user.Password == user.ConfirmPassword)
-            {
-                var result = await _userManager.CreateAsync(appUser, user.Password);
 
-                if (result.Succeeded)
+            var result = await _userManager.CreateAsync(appUser, user.Password);
+
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
                 {
-                    return RedirectToAction("Index", "Login");
-                }
-                else
-                {
-                    foreach (var item in result.Errors)
-                    {
-                        ModelState.AddModelError("", item.Description);
-                    }
+                    ModelState.AddModelError("", item.Description);
                 }
             }
 
             return View(user);
         }
+
     }
 }

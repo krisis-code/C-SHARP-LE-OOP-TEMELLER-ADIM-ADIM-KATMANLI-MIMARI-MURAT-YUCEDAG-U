@@ -13,6 +13,6 @@ namespace EntityLayer.Concrete
 
         public string Surname { get; set; }
 
-        public string Sender { get; set; }
+        public string? Gender { get; set; }
     }
 }
