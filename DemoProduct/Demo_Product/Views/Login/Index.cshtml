@@ -1,9 +1,22 @@
-﻿@model UserRegisterViewModel
+﻿@model UserLoginViewModel
 @{
     Layout = null;
 }
+
 <!DOCTYPE html>
 
+<!-- =========================================================
+* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
+==============================================================
+
+* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
+* Created by: ThemeSelection
+* License: You must have a valid license purchased in order to legally use the theme for your project.
+* Copyright ThemeSelection (https://themeselection.com)
+
+=========================================================
+ -->
+<!-- beautify ignore:start -->
 <html lang="en"
       class="light-style customizer-hide"
       dir="ltr"
@@ -15,7 +28,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Register Basic - Pages | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>Login Basic - Pages | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
 
     <meta name="description" content="" />
 
@@ -56,7 +69,7 @@
     <div class="container-xxl">
         <div class="authentication-wrapper authentication-basic container-p-y">
             <div class="authentication-inner">
-                <!-- Register Card -->
+                <!-- Register -->
                 <div class="card">
                     <div class="card-body">
                         <!-- Logo -->
@@ -86,13 +99,11 @@
                                                             <use xlink:href="#path-1"></use>
                                                         </mask>
                                                         <use fill="#696cff" xlink:href="#path-1"></use>
-                                                        <g id="Path-3"
-                                                           mask="url(#mask-2)">
+                                                        <g id="Path-3" mask="url(#mask-2)">
                                                             <use fill="#696cff" xlink:href="#path-3"></use>
                                                             <use fill-opacity="0.2" fill="#FFFFFF" xlink:href="#path-3"></use>
                                                         </g>
-                                                        <g id="Path-4"
-                                                           mask="url(#mask-2)">
+                                                        <g id="Path-4" mask="url(#mask-2)">
                                                             <use fill="#696cff" xlink:href="#path-4"></use>
                                                             <use fill-opacity="0.2" fill="#FFFFFF" xlink:href="#path-4"></use>
                                                         </g>
@@ -111,104 +122,65 @@
                             </a>
                         </div>
                         <!-- /Logo -->
-                        <h4 class="mb-2">Macera bizimle başlıyor 🚀</h4>
-                        <p class="mb-4">Ücretsiz hesap oluşturmak için lütfen aşağıdaki formu doldurun</p>
+                        <!-- /Logo -->
+                        <h4 class="mb-2">Sneat'e Hoşgeldiniz! 👋</h4>
+                        <p class="mb-4">Lütfen hesabınıza giriş yapın ve maceraya başlayın</p>
 
-                        <form id="formAuthentication" class="mb-3" asp-action="Index" asp-controller="Register" method="post">
+                        <form id="formAuthentication" class="mb-3" asp-action="Index" asp-controller="Product" method="post">
                             <div class="mb-3">
-                                <label for="Name" class="form-label">İsim</label>
+                                <label for="email-username" class="form-label">Email veya Kullanıcı Adı</label>
                                 <input type="text"
                                        class="form-control"
-                                       id="Name"
-                                       asp-for="Name"
-                                       placeholder="İsminizi giriniz"
-                                       autofocus />
-                                <span asp-validation-for="Name" class="text-danger"></span>
-                            </div>
-                            <div class="mb-3">
-                                <label for="SurName" class="form-label">Soy isim</label>
-                                <input type="text"
-                                       class="form-control"
-                                       id="SurName"
-                                       asp-for="SurName"
-                                       placeholder="Soyisminizi girin"
-                                       autofocus />
-                                <span asp-validation-for="SurName" class="text-danger"></span>
-                            </div>
-                            <div class="mb-3">
-                                <label for="Email" class="form-label">Email</label>
-                                <input type="email"
-                                       class="form-control"
-                                       id="Email"
-                                       asp-for="Email"
-                                       placeholder="E-posta adresinizi girin" />
-                                <span asp-validation-for="Email" class="text-danger"></span>
-                            </div>
-                            <div class="mb-3">
-                                <label for="UserName" class="form-label">Kullanıcı Adı</label>
-                                <input type="text"
-                                       class="form-control"
-                                       id="UserName"
+                                       id="email-username"
                                        asp-for="UserName"
-                                       placeholder="Kullanıcı adı girin"
+                                       name="UserName"
+                                       placeholder="Email veya kullanıcı adınızı girin"
                                        autofocus />
                                 <span asp-validation-for="UserName" class="text-danger"></span>
                             </div>
-                            <div class="mb-3 form-password-toggle">
-                                <label class="form-label" for="Password">Şifre</label>
+                            
+
+                           <div class="mb-3 form-password-toggle">
+                                <div class="d-flex justify-content-between">
+                                    <label class="form-label" asp-for = "Password" >Şifre</label>
+                                    <a href="auth-forgot-password-basic.html">
+                                        <small>Şifremi Unuttum?</small>
+                                    </a>
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
                                 <div class="input-group input-group-merge">
                                     <input type="password"
-                                           id="Password"
+                                           id="password"
                                            class="form-control"
                                            asp-for="Password"
                                            placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                                           aria-describedby="Password" />
+                                           aria-describedby="password" />
                                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                                     <span asp-validation-for="Password" class="text-danger"></span>
                                 </div>
                             </div>
-
-                            <div class="mb-3 form-password-toggle">
-                                <label class="form-label" for="ConfirmPassword">Şifre tekrar</label>
-                                <div class="input-group input-group-merge">
-                                    <input type="password"
-                                           id="ConfirmPassword"
-                                           class="form-control"
-                                           asp-for="ConfirmPassword"
-                                           placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                                           aria-describedby="ConfirmPassword" />
-                                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
-                                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-                                  
-                                </div>
-                            </div>
-                            <div class="text-danger" asp-validation-summary="ModelOnly"> </div>
                             <div class="mb-3">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms" />
-                                    <label class="form-check-label" for="terms-conditions">
-                                        Kabul ediyorum
-                                        <a href="javascript:void(0);">Gizlilik politikası ve şartları kabul ediyorum</a>
-                                    </label>
+                                    <input class="form-check-input" type="checkbox" id="remember-me" />
+                                    <label class="form-check-label" for="remember-me"> Beni Hatırla </label>
                                 </div>
                             </div>
-                            <button class="btn btn-primary d-grid w-100">Kayıt ol</button>
+                            <div class="mb-3">
+                                <button class="btn btn-primary d-grid w-100" type="submit">Giriş Yap</button>
+                            </div>
                         </form>
 
                         <p class="text-center">
-                            <span>Zaten bir hesabınız var mı?</span>
-                            <a asp-action="Index" asp-controller="Login">
-                                <span>Giriş yap</span>
+                            <span>Platformumuzda yeni misiniz?</span>
+                            <a asp-action="Index" asp-controller="Register">
+                                <span>Hesap Oluşturun</span>
                             </a>
                         </p>
-                    </div>
-                </div>
-                <!-- /Register Card -->
-            </div>
-        </div>
-    </div>
+
 
     <!-- / Content -->
+
+
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
     <script src="~/sneat/assets/vendor/libs/jquery/jquery.js"></script>
@@ -225,9 +197,5 @@
     <!-- Page JS -->
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-
-    <!-- Validation JS -->
-    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 </body>
 </html>
