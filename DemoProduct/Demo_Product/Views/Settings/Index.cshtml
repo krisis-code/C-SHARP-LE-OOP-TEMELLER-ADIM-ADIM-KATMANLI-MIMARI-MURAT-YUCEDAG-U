@@ -1,8 +1,75 @@
-﻿
+﻿@model UserEditViewModel
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_UILayout.cshtml";
 }
 
-<h1>Index</h1>
-
+   <div class="card mb-4">
+                    <h5 class="card-header">Profile Details</h5>
+                    <!-- Account -->
+                 
+                    <hr class="my-0" />
+                    <div class="card-body">
+                      <form id="formAccountSettings" asp-action="Index" asp-controller="Settings" method="POST" onsubmit="return false">
+                        <div class="row">
+                          <div class="mb-3 col-md-6">
+                            <label asp-for ="Name" class="form-label">Adınız</label>
+                            <input
+                              class="form-control"
+                              type="text"
+                           id="Name"
+                           name="Name"
+                              
+                              autofocus
+                            />
+                          </div>
+                <div class="mb-3 col-md-6">
+                    <label asp-for="SurName" class="form-label">Soyadınız</label>
+                    <input class="form-control"
+                           type="text"
+                           id="SurName"
+                           name="SurName"
+                           autofocus />
+                </div>
+                          
+                          <div class="mb-3 col-md-6">
+                            <label asp-for="Email" class="form-label">Email</label>
+                    <input type="text" class="form-control" id="Email" name="Email" placeholder="Email" />
+                          </div>
+                         
+                          <div class="mb-3 col-md-6">
+                            <label class="form-label" asp-for="Gender">Cinsiyet</label>
+                    <select id="Gender" class="select2 form-select">
+                              <option value="">Select</option>
+                        <option value="Erkek">Erkek</option>
+                        <option value="Kadın">Kadın</option>
+                              
+                            </select>
+                          </div>
+             
+                <div class="mb-3 col-md-6">
+                    <label asp-for="Password" class="form-label">Şifre</label>
+                    <input class="form-control"
+                           type="text"
+                           id="Password"
+                           name="Password"
+                           autofocus />
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label asp-for="ConfirmPassword" class="form-label">Şifre tekrar</label>
+                    <input class="form-control"
+                           type="text"
+                           id="ConfirmPassword"
+                           name="ConfirmPassword"
+                           autofocus />
+                </div>
+                          
+                        </div>
+                        <div class="mt-2">
+                          <button type="submit" class="btn btn-primary me-2">Save changes</button>
+                          <button type="reset" class="btn btn-outline-secondary">Cancel</button>
+                        </div>
+                      </form>
+                    </div>
+                    <!-- /Account -->
+                  </div>
