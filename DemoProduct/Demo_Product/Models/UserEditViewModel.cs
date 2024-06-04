@@ -10,8 +10,10 @@ namespace Demo_Product.Models
         [Required(ErrorMessage = "Lütfen Soyisim giriniz")]
         public string SurName { get; set; }
 
-        [Required(ErrorMessage = "Lütfen Kullanıcı giriniz")]
-        public string UserName { get; set; }
+        [Required(ErrorMessage = "Lütfen cinsiyet Seçiniz")]
+        public string Gender { get; set; }
+
+
 
         [Required(ErrorMessage = "Lütfen mail giriniz")]
         public string Email { get; set; }
