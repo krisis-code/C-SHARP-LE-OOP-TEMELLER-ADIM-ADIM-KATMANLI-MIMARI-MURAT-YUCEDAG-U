@@ -4,72 +4,50 @@
     Layout = "~/Views/Shared/_UILayout.cshtml";
 }
 
-   <div class="card mb-4">
-                    <h5 class="card-header">Profile Details</h5>
-                    <!-- Account -->
-                 
-                    <hr class="my-0" />
-                    <div class="card-body">
-                      <form id="formAccountSettings" asp-action="Index" asp-controller="Settings" method="POST" onsubmit="return false">
-                        <div class="row">
-                          <div class="mb-3 col-md-6">
-                            <label asp-for ="Name" class="form-label">Adınız</label>
-                            <input
-                              class="form-control"
-                              type="text"
-                           id="Name"
-                           name="Name"
-                              
-                              autofocus
-                            />
-                          </div>
+<div class="card mb-4">
+    <h5 class="card-header">Profile Details</h5>
+    <hr class="my-0" />
+    <div class="card-body">
+        <form id="formAccountSettings" asp-action="Index" asp-controller="Settings" method="POST">
+            <div class="row">
+                <div class="mb-3 col-md-6">
+                    <label asp-for="Name" class="form-label">Adınız</label>
+                    <input class="form-control" type="text" asp-for="Name" autofocus />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
                 <div class="mb-3 col-md-6">
                     <label asp-for="SurName" class="form-label">Soyadınız</label>
-                    <input class="form-control"
-                           type="text"
-                           id="SurName"
-                           name="SurName"
-                           autofocus />
+                    <input class="form-control" type="text" asp-for="SurName" />
+                    <span asp-validation-for="SurName" class="text-danger"></span>
                 </div>
-                          
-                          <div class="mb-3 col-md-6">
-                            <label asp-for="Email" class="form-label">Email</label>
-                    <input type="text" class="form-control" id="Email" name="Email" placeholder="Email" />
-                          </div>
-                         
-                          <div class="mb-3 col-md-6">
-                            <label class="form-label" asp-for="Gender">Cinsiyet</label>
-                    <select id="Gender" class="select2 form-select">
-                              <option value="">Select</option>
+                <div class="mb-3 col-md-6">
+                    <label asp-for="Email" class="form-label">Email</label>
+                    <input class="form-control" type="text" asp-for="Email" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label asp-for="Gender" class="form-label">Cinsiyet</label>
+                    <select class="form-select" asp-for="Gender">
+                        <option value="">Select</option>
                         <option value="Erkek">Erkek</option>
                         <option value="Kadın">Kadın</option>
-                              
-                            </select>
-                          </div>
-             
+                    </select>
+                    <span asp-validation-for="Gender" class="text-danger"></span>
+                </div>
                 <div class="mb-3 col-md-6">
                     <label asp-for="Password" class="form-label">Şifre</label>
-                    <input class="form-control"
-                           type="text"
-                           id="Password"
-                           name="Password"
-                           autofocus />
+                    <input class="form-control" type="password" asp-for="Password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
                 <div class="mb-3 col-md-6">
                     <label asp-for="ConfirmPassword" class="form-label">Şifre tekrar</label>
-                    <input class="form-control"
-                           type="text"
-                           id="ConfirmPassword"
-                           name="ConfirmPassword"
-                           autofocus />
+                    <input class="form-control" type="password" asp-for="ConfirmPassword" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                 </div>
-                          
-                        </div>
-                        <div class="mt-2">
-                          <button type="submit" class="btn btn-primary me-2">Save changes</button>
-                          <button type="reset" class="btn btn-outline-secondary">Cancel</button>
-                        </div>
-                      </form>
-                    </div>
-                    <!-- /Account -->
-                  </div>
+            </div>
+            <div class="mt-2">
+                <button class="btn btn-primary me-2" type="submit">Değişiklikleri kaydet</button>
+            </div>
+        </form>
+    </div>
+</div>

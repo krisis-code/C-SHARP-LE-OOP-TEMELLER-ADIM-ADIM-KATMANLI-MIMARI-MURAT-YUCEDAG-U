@@ -15,7 +15,6 @@ namespace Demo_Product.Controllers
         }
 
         [HttpGet]
-
         public async Task<IActionResult> Index()
         {
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
