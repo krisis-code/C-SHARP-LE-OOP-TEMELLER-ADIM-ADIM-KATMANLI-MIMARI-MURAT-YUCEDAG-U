@@ -126,7 +126,7 @@
                         <h4 class="mb-2">Sneat'e Hoşgeldiniz! 👋</h4>
                         <p class="mb-4">Lütfen hesabınıza giriş yapın ve maceraya başlayın</p>
 
-                        <form id="formAuthentication" class="mb-3" asp-action="Index" asp-controller="Product" method="post">
+                        <form id="formAuthentication" class="mb-3" asp-action="Index" asp-controller="Login" method="post">
                             <div class="mb-3">
                                 <label for="email-username" class="form-label">Email veya Kullanıcı Adı</label>
                                 <input type="text"
@@ -138,11 +138,10 @@
                                        autofocus />
                                 <span asp-validation-for="UserName" class="text-danger"></span>
                             </div>
-                            
 
-                           <div class="mb-3 form-password-toggle">
+                            <div class="mb-3 form-password-toggle">
                                 <div class="d-flex justify-content-between">
-                                    <label class="form-label" asp-for = "Password" >Şifre</label>
+                                    <label class="form-label" asp-for="Password">Şifre</label>
                                     <a href="auth-forgot-password-basic.html">
                                         <small>Şifremi Unuttum?</small>
                                     </a>
@@ -169,6 +168,7 @@
                                 <button class="btn btn-primary d-grid w-100" type="submit">Giriş Yap</button>
                             </div>
                         </form>
+
 
                         <p class="text-center">
                             <span>Platformumuzda yeni misiniz?</span>
