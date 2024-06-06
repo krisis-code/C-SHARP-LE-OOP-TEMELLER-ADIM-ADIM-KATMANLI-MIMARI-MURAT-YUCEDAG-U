@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Entitylayer.Concrete
 {
-    public class News
+    public class Announcement
     {
-        public int NewsId { get; set; }
+        public int AnnouncementId { get; set; }
 
         public string Title { get; set; }
 
