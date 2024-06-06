@@ -1,3 +1,4 @@
+using DataAccessLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

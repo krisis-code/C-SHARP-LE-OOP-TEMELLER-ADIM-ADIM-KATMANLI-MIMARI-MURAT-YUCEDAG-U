@@ -1,12 +1,5 @@
 ﻿using Entitylayer.Concrete;
-using EntityLayer.Concrete;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccessLayer.Concrete
 {
@@ -22,7 +15,7 @@ namespace DataAccessLayer.Concrete
 
         public DbSet<Image> Images { get; set; }
 
-        public DbSet<News> News { get; set; }
+        public DbSet<Announcement> Announcements { get; set; }
 
         public DbSet<Service> Services { get; set; }
 
