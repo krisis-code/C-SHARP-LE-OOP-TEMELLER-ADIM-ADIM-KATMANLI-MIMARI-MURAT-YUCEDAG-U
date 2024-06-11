@@ -23,4 +23,8 @@
     <ProjectReference Include="..\Entitylayer\Entitylayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Concrete\" />
+  </ItemGroup>
+
 </Project>
