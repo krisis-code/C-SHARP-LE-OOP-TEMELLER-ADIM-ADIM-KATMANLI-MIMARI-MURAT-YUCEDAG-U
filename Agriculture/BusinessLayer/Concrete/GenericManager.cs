@@ -17,29 +17,30 @@ namespace BusinessLayer.Concrete
             _genericDal = genericDal;
         }
 
-        public Task TDeleteAsync(T t)
+        public async Task TDeleteAsync(T t)
         {
-            throw new NotImplementedException();
+          await _genericDal.DeleteAsync(t);
         }
 
-        public Task<T> TGetByIdAsync(int id)
+        public async Task<T> TGetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _genericDal.GetByIdAsync(id);
         }
 
         public Task<List<T>> TGetListAsync()
         {
-            throw new NotImplementedException();
+            return _genericDal.GetListAsync();
         }
 
-        public Task TInsertAsync(T t)
+        public async Task TInsertAsync(T t)
         {
-            throw new NotImplementedException();
+            await _genericDal.InsertAsync(t);
+
         }
 
-        public Task TUpdateAsync(T t)
+        public async Task TUpdateAsync(T t)
         {
-            throw new NotImplementedException();
+            await _genericDal.UpdateAsync(t);
         }
     }
 }
