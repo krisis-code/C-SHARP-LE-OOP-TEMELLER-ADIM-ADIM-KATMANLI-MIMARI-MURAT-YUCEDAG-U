@@ -1,12 +1,22 @@
+using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
+using DataAcccessLayer.Abstract;
+using DataAcccessLayer.Concrete.EntityFramework;
 using DataAccessLayer.Concrete;
+using Entitylayer.Concrete;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
 builder.Services.AddDbContext<Context>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddScoped<ITeamService, TeamManager>();
+builder.Services.AddScoped<ITeamDal, EfTeamDal>();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 
