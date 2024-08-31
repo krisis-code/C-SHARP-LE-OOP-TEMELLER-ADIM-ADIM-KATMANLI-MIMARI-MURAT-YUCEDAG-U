@@ -17,18 +17,13 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.12" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj" />
     <ProjectReference Include="..\DataAcccessLayer\DataAcccessLayer.csproj" />
     <ProjectReference Include="..\Entitylayer\Entitylayer.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Areas\Admin\Controller\" />
-    <Folder Include="Areas\Admin\Views\" />
-    <Folder Include="Areas\Admin\Shared\" />
   </ItemGroup>
 
 </Project>
