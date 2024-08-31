@@ -9,38 +9,15 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-    public class TeamManager : ITeamService
+    public class TeamManager : GenericManager<Team> , ITeamService
     {
         private readonly ITeamDal _teamDal;
 
-        public TeamManager(ITeamDal teamDal)
+        public TeamManager(ITeamDal teamDal) : base(teamDal)
         {
             _teamDal = teamDal;
         }
 
-        public void Delete(Team t)
-        {
-            _teamDal.Delete(t);
-        }
-
-        public Team GetById(int id)
-        {
-          return _teamDal.GetById(id);
-        }
-
-        public List<Team> GetListAll()
-        {
-            return _teamDal.GetListAll();
-        }
-
-        public void Insert(Team t)
-        {
-            _teamDal.Insert(t);
-        }
-
-        public void Update(Team t)
-        {
-            _teamDal.Update(t);
-        }
+        
     }
 }

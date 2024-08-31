@@ -1,5 +1,6 @@
 ﻿using DataAcccessLayer.Abstract;
 using DataAccessLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,39 +9,41 @@ using System.Threading.Tasks;
 
 namespace DataAcccessLayer.Concrete.Repository
 {
-    public class GenericRepository<T> : IGenericDal<T> where T : class,new()
+    public class GenericRepository<T> : IGenericDal<T> where T : class, new()
     {
-        public void Delete(T t)
+        private readonly Context _context;
+
+        public GenericRepository(Context context)
         {
-            using var context = new Context();
-            context.Remove(t);
-            context.SaveChanges();
+            _context = context;
         }
 
-        public T GetById(int id)
+        public async Task DeleteAsync(T t)
         {
-            using var context = new Context();
-            return context.Set<T>().Find(id);
+            _context.Remove(t);
+            await _context.SaveChangesAsync();
         }
 
-        public List<T> GetListAll()
+        public async Task<T> GetByIdAsync(int id)
         {
-            using var context = new Context();
-            return context.Set<T>().ToList();
+            return await _context.Set<T>().FindAsync(id);
         }
 
-        public void Insert(T t)
+        public async Task<List<T>> GetListAsync()
         {
-            using var context = new Context();
-            context.Add(t);
-            context.SaveChanges();
+            return await _context.Set<T>().ToListAsync();
         }
 
-        public void Update(T t)
+        public async Task InsertAsync(T t)
         {
-            using var context = new Context();
-            context.Update(t);
-            context.SaveChanges();
+            _context.AddAsync(t);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateAsync(T t)
+        {
+            _context.Update(t);
+            await _context.SaveChangesAsync();
         }
     }
 }
